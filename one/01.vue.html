@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 1、导入vue的包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 直接引用下面定义的msg属性 -->
+        <p v-cloak>{{ msg }}</p>
+        
+        <h1 v-text="msg"></h1>
+
+        <div>{{msg2}}</div>
+        <div v-text="msg2"></div>
+        <div v-html="msg2"></div>
+    </div>
+
+    <script>
+        // 2、创建一个vue的实例
+        // 当导入vue包之后，在浏览器内存中就多了vue的构造函数
+        var vm = new Vue({
+            // 表示当前new的vue实例要控制页面上哪个区域
+            el: '#app',
+            // data属性中存放的是el属性中要用到的数据
+            data: {
+                msg: '欢迎vue',
+                msg2: '<h1>解析HTML标签</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>
