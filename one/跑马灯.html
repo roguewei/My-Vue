@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 1、导入vue的包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 2、创建一个要控制的区域 -->
+    <div id="app">
+
+        <input type="button" value="启动" @click="start"/>
+        <input type="button" value="停止" @click="end"/>
+
+        <h4>{{msg}}</h4>
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'abcdefghif',
+                // 在data上定义定时器id
+                intervalId: null
+            },
+            methods: {
+                start(){
+
+                    if(this.intervalId != null)
+                        return;
+
+                    this.intervalId = setInterval(() => {
+                        // console.log(this.msg);
+                        var start = this.msg.substring(0,1)
+                        var end = this.msg.substring(1)
+                        this.msg = end+start
+                        // VM实例会监听自己身上data中所有数据的改变，只要数据已发生改变，就会自动把最新的数据从data上同步到页面中去
+                        // 程序员只需要关心数据，而不需要考虑如何重新渲染dom页面
+                    }, 400);
+                },
+                end(){
+                    clearInterval(this.intervalId);
+                    // 每当清除了定时器，需要将定时器id赋值为null
+                    this.intervalId = null;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

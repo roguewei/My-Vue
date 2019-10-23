@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 1、导入vue的包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .inner {
+            height: 150px;
+            background-color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="inner" @click="divHandler">
+            <!-- 调用了btnHandler方法后会再调用外层div的divHandler方法 -->
+                <input type="button" value="点击" @click="btnHandler"/>
+            <!-- .stop组织冒泡，如果没有加.stop，则调用了btnHandler方法后会再调用外层div的divHandler方法 -->
+            <input type="button" value="点击" @click.stop="btnHandler"/>
+        </div>
+    </div>
+
+    <script>
+        // 创建vue实例，得到viewmodel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                divHandler(){
+                    console.log('触发 divHandler 事件')
+                },
+                btnHandler(){
+                    console.log('触发 btnHandler 事件')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
