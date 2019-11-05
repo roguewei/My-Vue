@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>局部注册组件</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <test titlea="title12" titleb="按钮" @testclick="clickout"></test>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+          clickout: function() {
+            console.log('this is clickout')
+          }
+        },
+        // 局部注册组件
+        components: {
+          test: {
+            template:
+              '<div><h1>hi {{ titlea }}</h1>' +
+              '<button @click="myclick">{{ titleb }}</button>' +
+              '</div>',
+            props: ['titlea', 'titleb'],
+            methods: {
+              myclick: function() {
+                console.log('myclick method')
+                this.$emit('testclick')
+              }
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

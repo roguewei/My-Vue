@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <ul>
+                <li v-for="item, index in items" :key="index">
+                    {{index}} {{ item.msg }}
+                </li>
+            </ul>
+        </div>
+
+        <ul>
+            <li v-for="value,key,index in object" :key="key">
+                {{ index }}-{{ key }}-{{ value }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vm =new Vue({
+            el : '#app',
+            data : {
+                items : [
+                    {msg : 1},
+                    {msg : 'bb'},
+                    {msg : 'cc'}
+                ],
+                object : {
+                    title : 'this',
+                    author : 'is',
+                    content : 'content'
+                }
+            },
+                methods: {
+                    click1: function(){
+                        
+                    }
+                }
+        })
+    </script>
+    
+</body>
+</html>

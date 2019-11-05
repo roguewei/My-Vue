@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        {{a}}
+    </div>
+
+    <script>
+        var mydata = {a : 1}
+        var vm = new Vue({
+            el: "#app1",
+            data: mydata
+        });
+        
+        vm.$watch('a', function(newVal, oldVal){
+            console.log(newVal, oldVal);
+        });
+        mydata.a = "udpate data";
+    </script>
+</body>
+</html>

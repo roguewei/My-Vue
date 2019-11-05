@@ -32,6 +32,10 @@
             鼠标悬停几秒钟查看此处动态绑定的提示信息！
         </div>
 
+        <div title="提示信息">
+            静态提示信息
+        </div>
+
         <!-- v-bind 是vue提供的用于绑定属性的指令 -->
         <input type="button" value="按钮" v-bind:title="mytitle"/>
         <input type="button" value="按钮" v-bind:title="mytitle + '可以使用变量形式添加表达式'"/>
@@ -44,6 +48,17 @@
 
         <p v-if="seen">是否显示</p>
     </div>
+
+    <div id="app2">
+        <p v-bind:title="msg">显示第二个vue控制区</p>
+
+        <ul>
+            <li v-for="fors in forarray">
+                {{fors.text}}
+            </li>
+        </ul>
+    </div>
+
 
     <script>
         // 2、创建一个vue的实例
@@ -64,6 +79,18 @@
                 show:function(){
                     alert("hello")
                 }
+            }
+        })
+
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                msg: '这里是app2',
+                forarray: [
+                    {text: 'script'},
+                    {text: 'java'},
+                    {text: 'c++'}
+                ]
             }
         })
     </script>

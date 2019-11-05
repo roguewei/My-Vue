@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局注册组件</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <button-counter titlea="title1" @clicknow="clicknowa">
+                <h1>hi vue</h1>
+        </button-counter>
+
+        <button-counter titlea="title2" @clicknow="clicknowa">
+                <h1>hi world</h1>
+        </button-counter>
+    </div>
+    
+    <script>
+        // 自定义组件
+        Vue.component('button-counter', {
+            // 自定义属性
+            props: ['titlea'],
+            // 组件的数据
+            data: function(){
+                return {
+                    count: 0
+                }
+            },
+            // 组件的模板内容
+            // 定义了<slot></slot>才可以在标签中间添加其他组件
+            // 模板最外层需要用一个大标签包裹，然后在里面使用其他标签，例如下面的div包裹button和slot
+            template: 
+                '<div>'+
+                    '<button @click="clickfun">{{titlea}} : clicked me {{count}} times.</button>'+
+                    '<slot></slot>'+
+                '</div>',
+            methods: {
+                clickfun : function(){
+                    this.count ++ ;
+                    // 触发事件
+                    this.$emit('clicknow', this.count)
+                }
+            }
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+                clicknowa : function(e){
+                    console.log(e);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

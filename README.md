@@ -1,5 +1,15 @@
 # My-Vue Note
 
+### 安装npm，切换源
+>npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+### 安装vue-cli
+>cnpm install -g @vue/cli
+
+### 安装 webpack
+> cnpm install -g webpack
+
+
 + v-cloak
 >隐藏vue标签
 
@@ -13,7 +23,7 @@
 >>简写 < input type="button" value="按钮" :title="mytitle"/>
 
 + v-on
->事件保定机制 缩写是 @
+>事件绑定机制 缩写是 @
 >>示例 < input type="button" value="按钮" :title="mytitle" v-on:click="show"/>
 ---
 >>简写 < input type="button" value="按钮" :title="mytitle" @click="show"/>
