@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="let in letters">{{let}}</li>
+      </ul>
+      <button @click="letMethod">按钮</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          letters: ['a', 'c', 'b']
+        },
+
+        methods: {
+          letMethod() {
+            // 在数组后面添加一个或多个元素
+            // this.letters.push('ddd', 'eee')
+            // 在数组前面添加一个或多个元素
+            // this.letters.unshift('aaa', 'bbb')
+            // 删除数组后面的一个元素
+            // this.letters.pop()
+            // 删除数组前面的一个元素
+            // this.letters.shift()
+
+            // splice作用： 删除/插入/替换元素
+            // 删除元素：第二个参数传入要删除几个元素，第三个元素不用传，如果没有传，则删除后面所有元素
+            // splice(start, start的后几位, 新值)
+            this.letters.splice(1, 0, 'e', 'f')
+
+            // sort 排序
+            // this.letters.sort()
+
+            // reverse 翻转
+            // this.letters.reverse()
+
+            // vue的方法
+            // set(要修改的对象， 索引值， 修改后的值)
+            // Vue.set(this.letters, 0, 'bbbbb')
+
+            // 以上方法都是响应式的，修改之后直接可以在浏览器中观察变化
+            // 而下面这种方法则不是响应式的
+            // this.letters[0] = 'ggg'
+            // console.log(this.letters)
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

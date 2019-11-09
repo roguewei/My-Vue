@@ -3,7 +3,7 @@
     <img src="./assets/logo.png" />
     <router-view />
     <!-- 3、显示组件 -->
-    <test @clickout="myclick('aaa')" msg="自定义消息" message="自定义message"></test>
+    <test msg="自定义消息" message="自定义message"></test>
     <test
       v-for="pos, index in posts"
       v-bind:key="index"
@@ -29,7 +29,8 @@ export default {
   },
   data () {
     return {
-      posts: ['aa', 'bb', 'cc']
+      posts: ['aa', 'bb', 'cc'],
+      postFontSize: 1
     }
   }
 }

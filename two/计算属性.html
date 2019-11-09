@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>计算属性</title>
+  </head>
+  <body>
+    <div id="app">
+      <h3>{{ totalPrice }}</h3>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          firstName: 'kobe',
+          lastName: 'bryant',
+          books: [
+            { id: 1, name: 'unix编程', price: 110 },
+            { id: 2, name: 'JAVA', price: 97 },
+            { id: 3, name: 'C++', price: 130 },
+            { id: 4, name: 'Python', price: 85 }
+          ]
+        },
+
+        methods: {},
+        // 与methods类似，都是定义方法，区别在于这是用于属性方法，在定义名字的时候应该不加动词，在调用的时候可不加()
+        // computed里的方法只调用一次，在本地会进行缓存，效率更高，而在methods里的方法没有缓存，调用几次就执行几次
+        computed: {
+          fullName: function() {
+            return this.firstName + ' ' + this.lastName
+          },
+          // 完整的计算属性是有getter和setter方法的
+          // 但是一般计算属性是只读的，所以省略了setter方法，最后简化成上面的fullName这种形式
+          fullName2: {
+            set: function(newvalue) {
+              console.log('this is setter', newvalue)
+            },
+            get: function() {
+              return 'this is getter'
+            }
+          },
+          totalPrice: function() {
+            let result = 0
+            for (let i = 0; i < this.books.length; i++) {
+              result += this.books[i].price
+            }
+            for (let i in this.books) {
+              console.log(i)
+            }
+            for (let book of this.books) {
+              console.log(book)
+            }
+            return result
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

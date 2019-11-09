@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <!-- v-model 双向绑定 -->
-        <input v-model="msg" placeholder="edit me">
-        <p>message is : {{msg}}</p>
+      <!-- v-model 双向绑定 -->
+      <input v-model="msg" placeholder="edit me" />
+      <p>message is : {{ msg }}</p>
 
-        <div style="margin-top: 20px;">
-            <input type="checkbox" id="java" value="Java" v-model="checkedNames">
-            <label for="java">Java</label>
-            <input type="checkbox" id="C++" value="C++" v-model="checkedNames">
-            <label for="C++">C++</label>
-            <input type="checkbox" id="python" value="python" v-model="checkedNames">
-            <label for="python">python</label>
+      <div style="margin-top: 20px;">
+        <input type="checkbox" id="java" value="Java" v-model="checkedNames" />
+        <label for="java">Java</label>
+        <input type="checkbox" id="C++" value="C++" v-model="checkedNames" />
+        <label for="C++">C++</label>
+        <input
+          type="checkbox"
+          id="python"
+          value="python"
+          v-model="checkedNames"
+        />
+        <label for="python">python</label>
 
-            <span>checked names : {{ checkedNames }}</span>
-        </div>
+        <span>checked names : {{ checkedNames }}</span>
+      </div>
 
-        <div style="margin-top: 20px;">
-                <input type="radio" id="one" value="one" v-model="picked">
-                <label for="one">one</label>
-                <input type="radio" id="two" value="two" v-model="picked">
-                <label for="two">two</label>
-    
-                <span>picked : {{ picked }}</span>
-        </div>
+      <div style="margin-top: 20px;">
+        <input type="radio" id="one" value="one" v-model="picked" />
+        <label for="one">one</label>
+        <input type="radio" id="two" value="two" v-model="picked" />
+        <label for="two">two</label>
 
-        <div>
-            <button type="button" @click="submit">提交</button>
-        </div>
+        <span>picked : {{ picked }}</span>
+      </div>
+
+      <div>
+        <button type="button" @click="submit">提交</button>
+      </div>
     </div>
 
     <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                msg: "test",
-                checkedNames : ['Java', 'C++'],
-                picked : "one"
-            },
-            methods: {
-                submit: function(){
-                    var postObj = {
-                        msg : this.msg,
-                        checkval : this.checkedNames,
-                        radioval : this.picked
-                    }
-                    console.log(postObj);
-                }
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'test',
+          checkedNames: ['Java', 'C++'],
+          picked: 'one'
+        },
+        methods: {
+          submit: function() {
+            var postObj = {
+              msg: this.msg,
+              checkval: this.checkedNames,
+              radioval: this.picked
             }
-        })
+            console.log(postObj)
+          }
+        }
+      })
     </script>
-</body>
+  </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="item,key,index in info">{{ item }}---{{ key }}</li>
+      </ul>
+
+      <h2>以下为点击变色案例</h2>
+      <ul>
+        <li
+          v-for="item, index in movies"
+          :class="{actived: currentIndex === index}"
+          @click="liclick(index)"
+        >
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          info: {
+            id: 1,
+            name: 'winston',
+            height: 188
+          },
+          movies: ['海贼王', '火影忍者', '死神', '进击的巨人', '妖精的尾巴'],
+          currentIndex: -1
+        },
+
+        methods: {
+          liclick(index) {
+            this.currentIndex = index
+          }
+        }
+      })
+    </script>
+    <style>
+      .actived {
+        color: red;
+      }
+    </style>
+  </body>
+</html>

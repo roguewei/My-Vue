@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button>按钮1</button>
+      <button>按钮2</button>
+      <button>按钮3</button>
+      <button>按钮4</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var btns = document.getElementsByTagName('button')
+
+      // 错误写法
+      // for (var i = 0; i < btns.length; i++) {
+      //   // 这里是立即执行的
+      //   console.log(i)
+      //   // 这里是当点击时才执行的，与上一步是异步的，而且var是全局的，当所有i++执行完之后，每一次循环的i都变成了最后的结果
+      //   btns[i].addEventListener('click', () => {
+      //     console.log(i)
+      //   })
+      // }
+
+      // ES5的语法，因为if和for没有块级作用域的概念，在调用内部函数的时候，外部的var类型的i已经执行完了
+      for (var i = 0; i < btns.length; i++) {
+        ;(function(num) {
+          btns[num].addEventListener('click', () => {
+            console.log(num)
+          })
+        })(
+          // 调用闭包匿名函数
+          i
+        )
+      }
+      // ES6语法，增加了const和let类型，支持块级作用域
+      // for (let i = 0; i < btns.length; i++) {
+      //   btns[i].addEventListener('click', () => {
+      //     console.log(i)
+      //   })
+      // }
+
+      // 错误方式输出，每次输出结果都是4
+      for (var i = 0; i < 4; i++) {
+        setTimeout(function() {
+          console.log(i)
+        }, 300)
+      }
+
+      for (var i = 0; i < 4; i++) {
+        ;(function(num) {
+          setTimeout(function() {
+            console.log(num)
+          }, 1000)
+        })(i)
+      }
+
+      for (var i = 0; i < 4; i++) {
+        setTimeout(
+          (function(i) {
+            return function() {
+              console.log(i)
+            }
+          })(i),
+          1000
+        )
+      }
+    </script>
+    <style></style>
+  </body>
+</html>

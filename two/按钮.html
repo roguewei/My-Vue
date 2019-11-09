@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
-        <div id="example-1">
-            <button @click="counter += 1">数值 ：{{counter}}</button>
-            <button @click="greet('abc',$event)">Greet</button>
-        </div>
+      <div id="example-1">
+        <button @click="counter += 1">数值 ：{{ counter }}</button>
+        <button @click="greet('abc',$event)">Greet</button>
+
+        <!-- 在事件定义是，方法本身需要参数，但是绑定时没有传入参数，这时vue会默认讲浏览器生成的event对象传入方法 -->
+        <button @click="btnclick">按钮</button>
+      </div>
     </div>
     <script>
-        var vm = new Vue({
-            el: '#app',
-            data: {
-                counter : 0
-            },
-            methods: {
-                greet : function(str, e){
-                    console.log(str);
-                    console.log(e);
-                }
-            }
-        })
-    </script>    
-</body>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          counter: 0
+        },
+        methods: {
+          greet: function(str, e) {
+            console.log(str)
+            console.log(e)
+          },
+          btnclick(abc) {
+            console.log(abc)
+          }
+        }
+      })
+    </script>
+  </body>
 </html>

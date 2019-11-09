@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div @click="divClick">
+        <!-- .stop组织冒泡，即点击按钮事件之后组织上一层的点击事件 -->
+        <button @click.stop="btnClick">按钮</button>
+      </div>
+
+      <!-- 未添加.prevent时，点击提交会自动跳转到myaction链接，添加了.prevent之后则不会 -->
+      <form action="myaction">
+        <input type="submit" value="提交" @click.prevent="mySubmit" />
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          msg: 'test'
+        },
+
+        methods: {
+          divClick() {
+            console.log('divClick')
+          },
+          btnClick() {
+            console.log('btnClick')
+          },
+          mySubmit() {
+            console.log('mySubmit')
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

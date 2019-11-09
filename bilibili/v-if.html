@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- vue底层会对页面进行优化，当切换的组件类型相同时，vue只会重复利用同一个组件，而不会新生成 -->
+      <!-- 如果不想复用组件，可以在加上key，当key值不同的时候vue就不会进行复用 -->
+      <div v-if="isUser">
+        <!-- for的作用：点击label时光标会自动定位到相同id的input中 -->
+        <label for="username">用户账户</label>
+        <input v-model="msg" type="text" id="username" placeholder="用户账户" />
+      </div>
+
+      <div v-else>
+        <label for="email">用户邮箱</label>
+        <input v-model="msg" type="text" id="email" placeholder="用户邮箱" />
+      </div>
+
+      <!-- v-show 是添加了display属性为none隐藏的，而v-if则是不存在dom中 -->
+      <div v-show="isUser" id="aaa">
+        this is v-show
+      </div>
+      <div v-if="isUser" id="bbb">
+        this is v-if
+      </div>
+      <br />
+      <button @click="change">切换按钮</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      var vm = new Vue({
+        el: '#app',
+        data: {
+          isUser: true,
+          msg: ''
+        },
+
+        methods: {
+          change() {
+            this.isUser = !this.isUser
+            this.msg = ''
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

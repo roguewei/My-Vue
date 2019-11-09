@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-
+  </head>
+  <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
     <div id="app1">
-        {{msg}}
-        <input type="button" @click="myclick" value="按钮"/>
+      {{ msg }}
+      <input type="button" @click="myclick" value="按钮" />
     </div>
 
     <script>
-        var vm = new Vue({
-            el: '#app1',
-            data: {
-                msg: 'hi vue'
-            },
-            methods: {
-                myclick: () => {
-                    vm.msg = '按钮改变文字'
-                }
-            },
-            // 初始化事件&生命周期
-            // 在实例舒适化之后，数据观测（data observer）和 event/watcher 事件配置之前被调用
-            beforeCreate: function(){
-                console.log('beforeCreate')
-            },
-            // 初始化注入&校验
-            // 在实例创建完成之后立即调用
-            // 在这一步实例已经完成以下的配置：数据观测，属性和方法的运算，watch/event事件回调
-            // 然而，挂载阶段还没开始，$el 属性目前不可见
-            created: function(){
-                console.log('create')
-            },
-            // 挂载之前
-            // 在挂载开始之前被调用，相关的渲染函数首次被调用
-            beforeMount: function(){
-                console.log('beforeMount')
-            },
-            // 挂载完成后
-            // el 被新创建的vm.$el 替换，挂载成功
-            mounted: function(){
-                console.log('mounted')
-            },
-            // keep-alive组件激活时调用，在服务器端渲染起见不被调用
-            activated: function(){
-                console.log("activated")
-            },
-            // keep-alive 组件停用时调用，，在服务器端渲染起见不被调用
-            deactivated: function(){
-                console.log("deactivated")
-            },
-            // 虚拟DOM重新渲染并应用更新前
-            // 数据更新时调用
-            beforeUpdate: function(){
-                console.log('beforeUpdate')
-            },
-            // 虚拟DOM重新渲染并应用更新
-            // 组件 DOM 已经更新，组件更新完毕
-            updated: function(){
-                console.log('updated')
-            },
-            beforeDestroy: function(){
-                console.log('beforeDestroy')
-            },
-            destroyed: function(){
-                console.log('destroyed')
-            },
-        });
-        setTimeout(function(){
-            vm.msg = 'change `````````';
-        }, 3000)
+      var vm = new Vue({
+        el: '#app1',
+        data: {
+          msg: 'hi vue'
+        },
+        methods: {
+          myclick: () => {
+            vm.msg = '按钮改变文字'
+          }
+        },
+        // 初始化事件&生命周期
+        // 在实例舒适化之后，数据观测（data observer）和 event/watcher 事件配置之前被调用
+        beforeCreate: function() {
+          console.log('beforeCreate')
+        },
+        // 初始化注入&校验
+        // 在实例创建完成之后立即调用
+        // 在这一步实例已经完成以下的配置：数据观测，属性和方法的运算，watch/event事件回调
+        // 然而，挂载阶段还没开始，$el 属性目前不可见
+        created: function() {
+          console.log('create')
+        },
+        // 挂载之前
+        // 在挂载开始之前被调用，相关的渲染函数首次被调用
+        beforeMount: function() {
+          console.log('beforeMount')
+        },
+        // 挂载完成后
+        // el 被新创建的vm.$el 替换，挂载成功
+        mounted: function() {
+          console.log('mounted')
+        },
+        // keep-alive组件激活时调用，在服务器端渲染起见不被调用
+        activated: function() {
+          console.log('activated')
+        },
+        // keep-alive 组件停用时调用，，在服务器端渲染起见不被调用
+        deactivated: function() {
+          console.log('deactivated')
+        },
+        // 虚拟DOM重新渲染并应用更新前
+        // 数据更新时调用
+        beforeUpdate: function() {
+          console.log('beforeUpdate')
+        },
+        // 虚拟DOM重新渲染并应用更新
+        // 组件 DOM 已经更新，组件更新完毕
+        updated: function() {
+          console.log('updated')
+        },
+        beforeDestroy: function() {
+          console.log('beforeDestroy')
+        },
+        destroyed: function() {
+          console.log('destroyed')
+        }
+      })
+      setTimeout(function() {
+        vm.msg = 'change `````````'
+      }, 3000)
     </script>
-</body>
+  </body>
 </html>
