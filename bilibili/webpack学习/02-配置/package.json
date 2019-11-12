@@ -1,0 +1,15 @@
+{
+  "name": "meetwebpack",
+  "version": "1.0.0",
+  "description": "· main.js 引用了 mathUtils.js 的模块，在 index.html 中引用 js 不能直接如下引用：",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}

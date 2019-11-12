@@ -48,6 +48,12 @@ const app = new Vue({
         total += this.books[i].price * this.books[i].count
       }
       return total
+    },
+    // 使用高阶函数
+    totalPrice2() {
+      return this.books.reduce((pre, book) => {
+        return pre + book.price * book.count
+      }, 0)
     }
   },
   filters: {

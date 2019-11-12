@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <cpn :cpnmovies="movies" :cpnmsg="msg" @itemclick="itemcli"></cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <h2>{{ cpnmsg }}</h2>
+        <p>{{ cpnmovies }}</p>
+        <button v-for="item in cate" @click="btnclick(item)">
+          {{ item.name }}
+        </button>
+      </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+      // 父传子 props
+      Vue.component('cpn', {
+        template: '#cpn',
+        // 属性定义方式一
+        // props: ['cpnmovies', 'cpnmsg']
+
+        // 属性定义方式二，设置了类型限制
+        // props: {
+        //   cpnmovies: Array,
+        //   cpnmsg: String
+        // }
+
+        // 属性定义方式三，设置类型限制并添加默认值
+        props: {
+          cpnmovies: {
+            type: Array,
+            // 当类型是对象或者是数组时，默认值需设置成方法
+            default() {
+              return ['111', '222']
+            }
+          },
+          cpnmsg: {
+            type: String,
+            default: '111111111'
+          }
+        },
+        data() {
+          return {
+            cate: [
+              { id: '11', name: '热门' },
+              { id: '22', name: '家电' },
+              { id: '33', name: '手机' },
+              { id: '44', name: '办公' }
+            ]
+          }
+        },
+        methods: {
+          btnclick(item) {
+            // console.log(item)
+            // 传递数据给父组件
+            // 第一个参数是发送的事件， 第二个是发送的数据
+            this.$emit('itemclick', item)
+          }
+        }
+      })
+    </script>
+
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: '父标题',
+          movies: ['aaa', 'bbb', 'ccc']
+        },
+
+        methods: {
+          itemcli(item) {
+            console.log(item)
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

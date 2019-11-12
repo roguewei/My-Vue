@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <cpn2></cpn2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 全局注册
+      Vue.component('cpn1', {
+        template: `
+        <div>
+          <h2>标题</h2>
+          <p>内容内容内容内容内容内容</p>
+        </div>
+        `
+      })
+
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'test'
+        },
+        methods: {},
+        // 局部注册
+        components: {
+          cpn2: {
+            template: `
+              <div>
+                <h2>标题222</h2>
+                <p>内容内容内容内容内容内容222</p>
+              </div>
+            `
+          }
+        }
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

@@ -38,6 +38,18 @@
         <span>picked : {{ picked }}</span>
       </div>
 
+      <select v-model="sel" name="fruit">
+        <option
+          v-for="item in selectdata"
+          :value="item.id"
+          :id="item.id"
+          :key="item.id"
+          >{{ item.name }}</option
+        >
+      </select>
+
+      <div>{{ sel }}</div>
+
       <div>
         <button type="button" @click="submit">提交</button>
       </div>
@@ -49,7 +61,26 @@
         data: {
           msg: 'test',
           checkedNames: ['Java', 'C++'],
-          picked: 'one'
+          picked: 'one',
+          sel: '',
+          selectdata: [
+            {
+              id: 11,
+              name: '苹果'
+            },
+            {
+              id: 22,
+              name: '桃子'
+            },
+            {
+              id: 33,
+              name: '西瓜'
+            },
+            {
+              id: 44,
+              name: '榴莲'
+            }
+          ]
         },
         methods: {
           submit: function() {
