@@ -1,23 +1,14 @@
 <template>
   <div>
     <h2>{{ msg }}</h2>
-    <button>按钮</button>
-    <Cpn></Cpn>
   </div>
 </template>
-
 <script>
-
-import Cpn from './Cpn'
-
 export default {
-  name: "App",
-  components: {
-    Cpn
-  },
+  name: "Cpn",
   data () {
     return {
-      msg: 'hello vue webpack'
+      msg: 'this is my cpn'
     }
   },
   methods: {
@@ -25,6 +16,5 @@ export default {
   }
 }
 </script>
-
 <style>
 </style>

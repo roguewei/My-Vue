@@ -55,3 +55,12 @@ devServer: {
   "dev": "webpack-dev-server"
 },
 ```
+
+```
+配置分离，将webpack.config.js里面的内容抽取到build文件夹下的三个js文件中
+然后安装相关依赖
+npm install webpack-merge --save-dev
+抽取出来之后就不需要webpack.config.js文件了，
+然后到package.json文件中修改配置
+"build": "webpack --config ./build/prod.config.js",
+```
