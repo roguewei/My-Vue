@@ -34,4 +34,17 @@
 ### 如果需要将 css 也一起模块化打包，需要安装 loader
 
 > `npm install --save-dev css-loader`
+
 > `npm install style-loader --save-dev`
+
+### 如果需要将 less 也一起模块化打包，需要安装 如下 loader
+
+> `npm install --save-dev less-loader less`
+
+# 由于目前打包之后生成的 js 文件是包含 ES5 和 ES6 的，但是某些浏览器不支持 ES6 的语法，可能报错，
+
+# 所以需要安装 babel 工具，将 ES6 的语法转换成 ES5
+
+> `npm install --save-dev babel-loader@7 babel-core babel-preset-es2015`
+
+### 安装完之后配置 webpack.config.js 文件

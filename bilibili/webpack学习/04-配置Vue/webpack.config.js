@@ -38,23 +38,6 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.(png|jpg|gif|jpeg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              // 当图片大小小于limit时，会将图片编译成base64字符串形式
-              // 当图片大小大于limit时，就需要用到file-loader模块进行加载，因为是直接读取文件URL的形式进行加载
-              // 34,099
-              limit: 1900,
-              // 将文件保存到打包后的文件夹下的img文件夹下，并使用源文件名称，如果没有img文件夹则会自己创建
-              // hash:8代表取8位hash值，ext表示扩展名
-              name: 'img/[name].[hash:8].[ext]'
-            }
-          }
-        ]
-      },
       // 配置ES6转ES5
       {
         test: /\.js$/,
@@ -66,7 +49,20 @@ module.exports = {
             presets: ['es2015']
           }
         }
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ]
+  },
+  resolve: {
+    // 配置import时是否忽略后缀
+    extensions: ['.js', '.css', '.less', '.vue'],
+    alias: {
+      // 当js文件中import了vue之后，会来到此处查找配置的文件夹
+      // 此处配置的是node_modules/vue/dist/vue.esm.js
+      vue$: 'vue/dist/vue.esm.js'
+    }
   }
 }
