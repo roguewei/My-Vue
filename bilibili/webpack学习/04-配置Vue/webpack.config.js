@@ -1,8 +1,18 @@
 // 动态获取路径，需要使用node的语法
 const path = require('path')
 
+// 添加插件（可用可不用）
+// const webpack = require('webpack')
+const htmlWebpackPlugin = require('html-webpack-plugin')
 // commonjs的导出
 module.exports = {
+  // 配置插件
+  plugins: [
+    // new webpack.BannerPlugin('使用插件案例'),
+    new htmlWebpackPlugin({
+      template: 'index.html'
+    })
+  ],
   // 入口
   entry: './src/main.js',
   // 出口
@@ -10,9 +20,9 @@ module.exports = {
     // 这里需要绝对路径，这里使用动态获取路径
     // 拼接路径，__dirname是node自带的全局变量，保存的是本文件所在的路径
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    // publicPath，只要设计到URL的东西，都会在前面拼接路径，例如下面的url-loader限制的大于limit大小的图片
-    publicPath: 'dist/'
+    filename: 'bundle.js'
+    // publicPath，只要涉及到URL的东西，都会在前面拼接路径，例如下面的url-loader限制的大于limit大小的图片
+    // publicPath: './dist/'
   },
   // 配置模块规则，test为规则，匹配到该模式的就使用use里面的loader
   module: {

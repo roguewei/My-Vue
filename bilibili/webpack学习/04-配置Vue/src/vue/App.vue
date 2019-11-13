@@ -16,7 +16,7 @@ export default {
   },
   data () {
     return {
-      msg: 'hello vue webpack vue file'
+      msg: 'hello vue webpack'
     }
   },
   methods: {

@@ -30,3 +30,7 @@ Module build failed: Error: Cannot find module 'webpack/lib/RuleSet'
 之后rpm run build
 
 ```
+
+# 注意！项目中的 webpack 和 vue-loader 的版本对应很重要
+
+# 本项目使用 webpack3.6.0 和 vue-loader13.0.0
