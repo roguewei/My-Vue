@@ -1,0 +1,42 @@
+// import Vue from 'vue'
+// import Router from 'vue-router'
+// import HelloWorld from '../components/HelloWorld'
+// import About from '../components/About'
+// import User from '../components/User'
+
+// // 1、通过Vue.use安装插件
+// Vue.use(Router)
+
+// // 2、创建Router对象
+// export default new Router({
+//   // 3、配置路由和组件之间的映射关系
+//   routes: [
+//     {
+//       path: '/',
+//       // 首页重定向
+//       redirect: '/hello'
+//     },
+//     {
+//       path: '/hello',
+//       // name: 'HelloWorld',
+//       component: HelloWorld
+//     },
+//     {
+//       path: '/about',
+//       // name: 'About',
+//       component: About
+//     },
+//     {
+//       // 配置动态路由:userId要在跳转时用的，不能随便写
+//       path: '/user/:userId',
+//       // name: 'User',
+//       component: User
+//     }
+//   ],
+//   // 没有配置的话浏览器路径上显示的是带#的hash路径，配置了该属性就没有#了
+//   // HTML5的history模式
+//   mode: 'history',
+//   // 正在被点击的/活跃状态的组件使用的样式
+//   linkActiveClass: 'active'
+// })
+// // 4、在入口文件（main.js）中挂载router

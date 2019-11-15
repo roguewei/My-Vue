@@ -4,6 +4,7 @@
 const uglifyjswebpackplugin = require('uglifyjs-webpack-plugin')
 const webpackMerge = require('webpack-merge')
 const baseConfig = require('./base.config')
+
 // commonjs的导出
 // 合并base.config.js和本文件
 module.exports = webpackMerge(baseConfig, {
