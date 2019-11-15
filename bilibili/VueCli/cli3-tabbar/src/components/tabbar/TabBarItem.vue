@@ -1,15 +1,15 @@
 <template>
-  <div class="tab-bar-item">
-    <div v-if="isActive">
+  <div class="tab-bar-item" @click="itemClick">
+    <div v-if="!isActive">
       <slot name="item-icon" />
     </div>
-    <div v-else="isActive">
+    <div v-else>
       <slot name="item-icon-active" />
     </div>
-    <div :class="{ active: !isActive }">
+    <div :style="activeStyle">
       <slot name="item-text" />
     </div>
-    <!-- <img src="../..//assets/img/tabbar/home.svg" />
+    <!-- <img src="../../assets/img/tabbar/home.svg" />
     <div>
       首页
     </div> -->
@@ -18,14 +18,32 @@
 <script>
 export default {
   name: 'TabBarItem',
+  props: {
+    path: String,
+    activeColor: {
+      type: String,
+      default: 'red'
+    }
+  },
   data() {
     return {
-      msg: 'hello vue webpack vue file',
-      isActive: false
+      msg: 'hello vue webpack vue file'
+    }
+  },
+  computed: {
+    isActive() {
+      return this.$route.path.indexOf(this.path) !== -1
+    },
+    activeStyle() {
+      return this.isActive ? { color: this.activeColor } : {}
     }
   },
   methods: {
-    btnClick() {}
+    itemClick() {
+      if (this.$route.path !== this.path) {
+        this.$router.push(this.path)
+      }
+    }
   }
 }
 </script>
@@ -44,9 +62,5 @@ export default {
   /* 去掉img标签下自带的空间 */
   vertical-align: middle;
   margin-bottom: 2px;
-}
-
-.active {
-  color: rgb(221, 2, 2);
 }
 </style>

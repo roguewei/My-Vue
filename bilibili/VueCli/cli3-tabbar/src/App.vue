@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+    <!-- 占位显示路由定义的页面 -->
+    <router-view></router-view>
     <TabBar>
-      <TabBarItem>
+      <TabBarItem path="/home" activeColor="#6633FF">
         <img slot="item-icon" src="./assets/img/tabbar/home.svg" />
         <img
           slot="item-icon-active"
@@ -11,7 +13,7 @@
           首页
         </div>
       </TabBarItem>
-      <TabBarItem>
+      <TabBarItem path="/about" activeColor="#6633FF">
         <img slot="item-icon" src="./assets/img/tabbar/about.svg" />
         <img
           slot="item-icon-active"
@@ -21,7 +23,7 @@
           关于
         </div>
       </TabBarItem>
-      <TabBarItem>
+      <TabBarItem path="/profile" activeColor="#6633FF">
         <img slot="item-icon" src="./assets/img/tabbar/people.svg" />
         <img
           slot="item-icon-active"
@@ -31,7 +33,7 @@
           我的
         </div>
       </TabBarItem>
-      <TabBarItem>
+      <TabBarItem path="/news" activeColor="#6633FF">
         <img slot="item-icon" src="./assets/img/tabbar/news.svg" />
         <img
           slot="item-icon-active"
