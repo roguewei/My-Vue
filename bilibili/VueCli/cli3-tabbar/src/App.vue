@@ -2,8 +2,8 @@
   <div id="app">
     <!-- 占位显示路由定义的页面 -->
     <router-view></router-view>
-    <TabBar>
-      <TabBarItem path="/home" activeColor="#6633FF">
+    <MainTabBarItem />
+    <!-- <TabBarItem path="/home" activeColor="#6633FF">
         <img slot="item-icon" src="./assets/img/tabbar/home.svg" />
         <img
           slot="item-icon-active"
@@ -42,20 +42,17 @@
         <div slot="item-text">
           新闻
         </div>
-      </TabBarItem>
-    </TabBar>
+      </TabBarItem> -->
   </div>
 </template>
 
 <script>
-import TabBar from './components/tabbar/TabBar'
-import TabBarItem from './components/tabbar/TabBarItem'
+import MainTabBarItem from './components/tabbar/MainTabBarItem'
 
 export default {
   name: 'app',
   components: {
-    TabBar,
-    TabBarItem
+    MainTabBarItem
   }
 }
 </script>
