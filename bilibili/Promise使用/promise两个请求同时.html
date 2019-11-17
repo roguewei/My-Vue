@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // promise的all方法，让多个请求同时执行，
+      // all里面放的是可迭代对象，例如数组
+      Promise.all([
+        new Promise((resolve, reject) => {
+          // 请求1
+          // $ajax({
+          //   url: 'url1',
+          //   success: function(data) {
+          //     resolve(data)
+          //   }
+          // })
+          resolve('请求1')
+        }),
+        new Promise((resolve, reject) => {
+          // 请求2
+          // $ajax({
+          //   url: 'url2',
+          //   success: function(data) {
+          //     resolve(data)
+          //   }
+          // })
+          resolve('请求2')
+        })
+      ]).then(results => {
+        console.log(results)
+      })
+    </script>
+    <style></style>
+  </body>
+</html>

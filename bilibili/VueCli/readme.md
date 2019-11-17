@@ -145,3 +145,11 @@ const UserMsg = () => import('../components/UserMsg')
 include：字符串或正则表达式，只有匹配的组件会被缓存
 exclude：字符串或正则表达式，任何匹配的组件都不会被缓存
 ```
+
+### promise
+
+```
+promise是异步变成的一种解决方案
+常见使用场景：网络请求
+
+```
