@@ -151,5 +151,38 @@ exclude：字符串或正则表达式，任何匹配的组件都不会被缓存
 ```
 promise是异步变成的一种解决方案
 常见使用场景：网络请求
+```
 
+### Vuex
+
+```
+vue应用程序开发的状态管理模式
+简而言之，就是把多个组件共享的变量全部存储在一个对象里面，然后将这个对象放到顶层的vue实例中，
+让其他组件可以使用
+
+```
+
+### axios
+
+```
+1、安装axios
+npm install axios --save
+2、导入
+import axios from 'axios'
+3、使用
+参考main.js
+
+请求方式：
+axios(config)
+axios.request(config)
+axios.get(url[, config])
+axios.delete(url[, coinfig])
+axios.head(url[, config])
+axios.post(url[, data, config])
+axios.put(url[, data, config])
+axios.patch(url[, data, config])
+
+请求的参数问题：
+params是发送get请求时传递的
+data是发送post请求时传递的
 ```
