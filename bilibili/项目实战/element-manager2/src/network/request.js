@@ -6,5 +6,13 @@ export function request(config) {
     timeout: 10000
   })
 
+  instance.interceptors.request.use(res => {
+    return res
+  })
+
+  instance.interceptors.response.use(res => {
+    return res.data
+  })
+
   return instance(config)
 }

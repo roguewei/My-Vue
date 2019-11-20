@@ -95,7 +95,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   //从from跳转到to
   document.title = to.matched[0].meta.title
-  // next是必须调用的回调函数
+  // next是必须调用的回调函数，代表放行
   next()
 })
 
