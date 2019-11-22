@@ -1,25 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-const Login = () => import('../views/Login')
-const Home = () => import('../views/Home')
+import routes from './routes'
 
 Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
-  {
-    path: '/login',
-    component: Login
-  },
-  {
-    path: '/home',
-    component: Home
-  }
-]
 
 const router = new VueRouter({
   routes,
@@ -35,7 +18,7 @@ router.beforeEach((to, from, next) => {
     return next()
   } else {
     // 如果不是登录页就去查是否有token
-    const token = window.sessionStorage.getItem('username')
+    const token = window.sessionStorage.getItem('token')
     // 如果没有就跳转到登录
     if (!token) {
       return next('/login')

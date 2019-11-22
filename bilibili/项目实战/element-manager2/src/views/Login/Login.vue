@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- 头像 -->
       <div class="avatar_box">
-        <img src="../assets/logo.png" />
+        <img src="../../assets/logo.png" />
       </div>
       <el-form
         ref="loginFormRef"
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import { request } from '../network/request'
+import { request } from '../../network/request'
 
 export default {
   name: 'Login',
@@ -77,7 +77,7 @@ export default {
                 showClose: true
               })
               // 保存数据到sessionStroage，保存数据到sessionStroage只在当前网站打开期间生效
-              window.sessionStorage.setItem('username', res.data.name)
+              window.sessionStorage.setItem('token', res.data.token)
               // 通过编程式导航跳转页面
               this.$router.push('/home')
             } else {
@@ -144,7 +144,6 @@ export default {
 }
 
 .login_form_btn {
-  margin-left: 0%;
   text-align: center;
 }
 
@@ -153,5 +152,8 @@ export default {
   bottom: 0;
   width: 100%;
   padding: 0 20px;
+}
+.el-input {
+  width: 95%;
 }
 </style>
